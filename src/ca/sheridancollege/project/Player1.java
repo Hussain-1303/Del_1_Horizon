@@ -3,21 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ca.sheridancollege.project;
-import java.util.Random;
+import java.util.ArrayList;
 
 /**
  *
  * @author blessedguy
  */
-public class ComputerPlayer extends Player {
+public class Player1 extends Player {
 
-    public ComputerPlayer() {
-        super();
-    }
-
-    @Override
-    public String askForCard() {
-        Random rand = new Random();
-        return hand.get(rand.nextInt(hand.size()));
+    public Player1(ArrayList<String> initialHand) {
+        super(initialHand);
     }
 }

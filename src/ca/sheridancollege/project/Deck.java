@@ -5,9 +5,9 @@
  */
 package ca.sheridancollege.project;
 import java.util.*;
-
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * A concrete class that represents any grouping of cards for a Game. HINT, you might want to subclass this more than
@@ -39,7 +39,7 @@ public class Deck {
         }
         return null;
     }
-    
+
     public int getNumberOfCards() {
         return cards.size();
     }

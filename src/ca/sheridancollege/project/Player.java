@@ -5,7 +5,7 @@
  */
 package ca.sheridancollege.project;
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Collections;
 
 
 /**
@@ -17,38 +17,36 @@ import java.util.ArrayList;
 public abstract class Player {
     protected List<String> hand;
 
-    public Player() {
-        hand = new ArrayList<>();
+    public Player(List<String> initialHand) {
+        hand = initialHand;
     }
 
     public void addToHand(String card) {
         hand.add(card);
     }
 
-    public List<String> getHand() {
-        return hand;
-    }
-
     public boolean hasCard(String card) {
         return hand.contains(card);
     }
 
-    public String removeCard(String card) {
-        if (hand.contains(card)) {
-            hand.remove(card);
-            return card;
-        }
-        return null;
+    public void removeCard(String card) {
+        hand.remove(card);
     }
 
-    public abstract String askForCard();
-
     public void viewHand() {
-        System.out.println("Your hand:");
         for (String card : hand) {
             System.out.print(card + " ");
         }
         System.out.println();
     }
-}
 
+    public void checkForBooks() {
+        for (String rank : GoFishGame.RANKS) {
+            int count = Collections.frequency(hand, rank);
+            if (count == 4) {
+                System.out.println("Congratulations! Player has a book of " + rank + "s.");
+                hand.removeAll(Collections.singleton(rank));
+            }
+        }
+    }
+}
