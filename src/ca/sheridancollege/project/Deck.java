@@ -15,13 +15,13 @@ import java.util.Collections;
  * @author dancye
  * @author Paul Bonenfant Jan 2020
  */
-public class GroupOfCards {
+public class Deck {
 
     //The group of cards, stored in an ArrayList
-    private ArrayList<Card> cards;
+    private ArrayList<Deck> cards;
     private int size;//the size of the grouping
 
-    public GroupOfCards(int size) {
+    public Deck(int size) {
         this.size = size;
     }
 
