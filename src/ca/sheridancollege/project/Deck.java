@@ -4,6 +4,7 @@
  * Add your name as an author and the date!
  */
 package ca.sheridancollege.project;
+import java.util.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,40 +17,30 @@ import java.util.Collections;
  * @author Paul Bonenfant Jan 2020
  */
 public class Deck {
+    private List<String> cards;
 
-    //The group of cards, stored in an ArrayList
-    private ArrayList<Deck> cards;
-    private int size;//the size of the grouping
-
-    public Deck(int size) {
-        this.size = size;
+    public Deck() {
+        cards = new ArrayList<>();
+        initializeDeck();
     }
 
-    /**
-     * A method that will get the group of cards as an ArrayList
-     *
-     * @return the group of cards.
-     */
-    public ArrayList<Card> getCards() {
-        return cards;
-    }
-
-    public void shuffle() {
+    private void initializeDeck() {
+        for (int i = 0; i < GoFishGame.MAX_RANK; i++) {
+            for (int j = 0; j < GoFishGame.NUM_PLAYERS; j++) {
+                cards.add(GoFishGame.RANKS[i]);
+            }
+        }
         Collections.shuffle(cards);
     }
 
-    /**
-     * @return the size of the group of cards
-     */
-    public int getSize() {
-        return size;
+    public String drawCard() {
+        if (!cards.isEmpty()) {
+            return cards.remove(0);
+        }
+        return null;
     }
-
-    /**
-     * @param size the max size for the group of cards
-     */
-    public void setSize(int size) {
-        this.size = size;
+    
+    public int getNumberOfCards() {
+        return cards.size();
     }
-
-}//end class
+}
